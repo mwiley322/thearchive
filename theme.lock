@@ -10,7 +10,7 @@ assets/plugins.js:
 assets/shop.js.liquid:
   development: 2017-09-17T15:14:31-07:00   155004e420510db51a0bf6a67898d863
 assets/style.scss.liquid:
-  development: 2017-09-20T19:39:56-07:00   0917b9ef39f3ebe5a3493c274bbf7853
+  development: 2017-09-20T20:16:23-07:00   c0029011f24caf3cee38c909f2dfacec
 config/settings_schema.json:
   development: 2017-09-17T11:54:50-07:00   bdc48b76fad98f57271cf671e60151e0
 layout/theme.liquid:
@@ -22,7 +22,7 @@ snippets/main-nav.liquid:
 templates/blog.liquid:
   development: 2017-09-20T20:03:38-07:00   32f35c34e73ba32f693c24d8bdc8e81f
 templates/cart.liquid:
-  development: 2017-09-20T19:44:00-07:00   d6de878b92113976e7b031959a2a981b
+  development: 2017-09-20T20:40:51-07:00   8b119ddb6399887b61e27794c302572a
 templates/collection.all.liquid:
   development: 2017-09-12T19:15:30-07:00   dacf39ffbab00e3bd69e0a9085430020
 templates/collection.designer.liquid:
@@ -30,9 +30,9 @@ templates/collection.designer.liquid:
 templates/collection.liquid:
   development: 2017-09-20T19:26:55-07:00   f2ccbe888a5cdc4775e4fb531c0df870
 templates/customers/account.liquid:
-  development: 2017-09-20T19:21:50-07:00   b78e3c564ec2c22fdee61c6060d4f9e5
+  development: 2017-09-20T20:09:24-07:00   de8a5207f5787bace28cffb8273e0319
 templates/customers/addresses.liquid:
-  development: 2017-09-19T22:51:26-07:00   0053b2322d3a966e14bc9483ad2fab22
+  development: 2017-09-20T20:10:12-07:00   9e424c18f5699cf4350cf9048d3e9acc
 templates/index.liquid:
   development: 2017-09-17T11:53:31-07:00   b550f0aec4b7b8982f585c996b20804f
 templates/list-collections.liquid:
