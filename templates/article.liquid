@@ -1,0 +1,46 @@
+<div class="container blog_content eleven columns">
+	<h2 class="hidden"><a href="{{ blog.url }}">{{ blog.title }}</a></h2>
+
+	<article class="blog-article margin-top-25">
+		<div class="row">
+			<div class="col s6">
+				<h5 class="blog-article-title six columns">
+					<a href="{{ blog.url }}" style="margin-right:10px">{{ blog.title | upcase }}</a> / <a href="{{ article.url }}" class="ylw" style="margin-left:10px">{{ article.title | upcase }}</a>
+				</h5>
+			</div>
+			<div class="col s6">
+				<h5 class="blog-article-date three columns last right-align">
+					<time pubdate datetime="{{ article.published_at | date: '%Y-%m-%d' }}">{{ article.published_at | date: '%b %d, %Y' | upcase }}</time>
+				</h5>
+			</div>
+		</div>
+
+		<div>
+			{{ article.content }}
+		</div>
+
+		{% if article.tags.size > 0 %}
+			<p class="blog-article-meta-tags">
+				Tags:
+			  {% for tag in article.tags %}
+			  <a href="{{ blog.url }}/tagged/{{ tag | handle }}">{{ tag }}</a>{% unless forloop.last %} / {% endunless %}
+			  {% endfor %}
+			</p>
+		{% endif %}
+	</article>
+
+	{% if blog.next_article or blog.previous_article %}
+	<div class="blog-article-pagination row margin-top-50">
+		<div class="col s6">
+			{% if blog.previous_article %}
+				<span class="four columns last right-align">{{ '&larr; PREVIOUS POST' | link_to: blog.previous_article }}</span>
+			{% endif %}
+		</div>
+		<div class="col s6 right-align">
+			{% if blog.next_article %}
+				<span class="four columns">{{ 'NEXT POST &rarr;' | link_to: blog.next_article }}</span>
+			{% endif %}
+		</div>
+	</div>
+	{% endif %}
+</div>

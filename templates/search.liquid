@@ -1,0 +1,79 @@
+<!-- SEARCH -->
+{% paginate search.results by 48 %}
+
+  {% if search.performed %}
+    <div class="container">
+      {% if search.results_count == 0 %}
+        <h3 class="desktop-display" style="padding-bottom:300px">0 results found for "{{ search.terms }}"</h3>
+        <h5 class="mobile-display margin-top-50" style="padding-bottom:300px">0 results found for "{{ search.terms }}"</h5>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  {% if search.performed %}
+    <div class="row">
+      <div class="desktop-display col s2">
+        <div class="sticky-sidebar">
+          <div class="search-scroller" style="margin-top:90px;">
+            <ul id="search-scrollbar" style="overflow-y:scroll; height: 100%; margin-top:{% if search.results_count == 0 %}-346px{% else %}-48px{% endif %}">
+              <li>
+                <a id="categories-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> CATEGORIES</a>
+              </li>
+                <ul class="categories-dropdown">
+                  {% for link in linklists.categories.links %}
+                    {% if collection.handle == 'new-arrivals' %}
+                      <li class="{% if link.active or parent_link_active %}active{% endif %}">
+                        <a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+                      </li>
+                    {% else %}
+                      <li class="{% if link.active or parent_link_active %}active{% endif %}">
+                        <a href="{{ link.url }}">{{ link.title }}</a>
+                      </li>
+                    {% endif %}
+                  {% endfor %}
+                </ul>
+              <li class="margin-top-25">
+                <a id="designers-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> DESIGNERS</a>
+              </li>
+              <ul class="designers-dropdown">
+                {% for link in linklists.designers.links %}
+                  {% if collection.handle == 'new-arrivals' %}
+                    <li class="{% if link.active or parent_link_active %}active{% endif %}">
+                      <a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+                    </li>
+                  {% else %}
+                    <li class="{% if link.active or parent_link_active %}active{% endif %}">
+                      <a href="{{ link.url }}">{{ link.title }}</a>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+                <div style="height: 305px"></div>
+              </ul>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {% if search.performed %}
+        <div class="col m10 l10">
+          {% if search.results_count > 0 %}
+            <h3 class="desktop-display" style="margin: 25px 0  25px 5px">{{ search.results_count }} items match your search for "{{ search.terms }}":</h3>
+            <h5 class="mobile-display margin-50">{{ search.results_count }} items match your search for "{{ search.terms }}":</h5>
+          {% endif %}
+          <div style="display:flex; flex-wrap: wrap; justify-content:flex-start">
+            {% for result in search.results %}
+              {% include 'search-results' %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if paginate.pages > 1 %}
+      <div class="center margin-50">
+        {% include 'pagination' %}
+      </div>
+    {% endif %}
+
+  {% endif %}
+
+{% endpaginate %}

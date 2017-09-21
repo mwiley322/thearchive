@@ -1,0 +1,120 @@
+<div class="container">
+	<div class="col s12 m12 l12">
+		<h3 class="center margin-bottom-50">SHOPPING CART</h3>
+
+		{% if cart.item_count > 0 %}
+
+		<form action="/cart" method="post">
+				{% for item in cart.items %}
+
+					{% if forloop.first %}
+						{% assign collection_url = item.product.collections.first.url %}
+						{% if collection_url == '/collections/frontpage' or collection_url == '' %}{% assign collection_url = '/collections/all' %}{% endif %}
+					{% endif %}
+
+
+
+					<div class="row">
+						<div class="col s2 m3 l3 xl3 center">
+							<a href="{{ item.product.url | within: collections.all }}">
+								<img src="{{ item.product.featured_image.src | product_img_url: 'compact' }}" alt="{{ item.title | escape }}" style="margin-bottom:25px;margin-top:20px" />
+							</a>
+						</div>
+						<div class="col s3 m4 l4 xl4 item_title">
+		        	<h5 class="desktop-display"><a href="{{ item.product.url | within: collections.all }}">{{ item.title }}</a></h5>
+							<p class="mobile-display"><a href="{{ item.product.url | within: collections.all }}">{{ item.title }}</a></p>
+		          <div class="line_item_properties">
+		          	<p class="vendor-name">{{ item.vendor }}</p>
+		          </div>
+	          </div>
+						<div class="col s2 m2 l2 xl2 item_quantity center">
+							<h5 class="desktop-display">QUANTITY</h5>
+							<p class="mobile-display center-align">QTY.</p>
+							{{ item.quantity }}
+						</div>
+						<div class="col s3 m1 l1 xl1 item_total center">
+							<h5 class="desktop-display">TOTAL</h5>
+							<p class="mobile-display center-align">TOTAL</p>
+							{% include 'price' with item.line_price %}
+						</div>
+						<div class="col s1 m1 l1 xl1 item_remove">
+							<div>
+								<h5 class="desktop-display" style="visibility:hidden">REMOVE</h5>
+								<p class="mobile-display" style="visibility:hidden">REMOVE</p>
+								<a href="/cart/change?line={{ forloop.index }}&quantity=0" class="flex-right">X</a>
+							</div>
+						</div>
+						<br/>
+						<hr>
+					</div>
+				{% endfor %}
+
+				<div class="row">
+					<div class="col s7">
+						<div class="order-notes">
+							<a href="#" class="note">Click to add special instructions to your order...</a><br/>
+							<textarea name="note" placeholder="Write your note here...">{{ cart.note }}</textarea>
+						</div>
+					</div>
+					<div class="col s3 m2 l2 xl2 center">
+						<h5 class="ylw desktop-display">SUBTOTAL</h5>
+						<p class="ylw mobile-display">SUBTOTAL</p>
+					</div>
+					<div class="col s1 center">
+						<h5 class="ylw desktop-display">{% include 'price' with cart.total_price %}</h5>
+						<p class="ylw mobile-display">{% include 'price' with cart.total_price %}</p>
+					</div>
+					<div class="col s1">
+					</div>
+				</div>
+				<div class="row margin-75 checkout-buttons">
+					<div class="flex-right">
+						<a href="/collections/all" class="btn-black">Continue Shopping</a>
+						<a href="#return-policy-modal" class="modal-trigger btn-yellow" style="margin-left:10px">Checkout</a>
+					</div>
+				</div>
+
+
+			  <!-- Modal Structure -->
+			  <div id="return-policy-modal" class="modal modal-fixed-footer">
+			    <div class="modal-content" style="padding-top:0;padding-left:0">
+						<div class="row return-policy-modal-header">
+							<div class="col s10 m10 l10 xl10" style="margin-left: 0px !important;padding:0">
+								<h3 style="padding-left:24px">Return Policy</h3>
+							</div>
+							<div class="col s2 m2 l2 xl2">
+								<h5 class="modal-close right-align" style="margin-top:0;padding-right:10px">X</h5>
+							</div>
+						</div>
+						<div style="padding:24px" class="margin-top-50">
+							{{ pages.shipping-and-return-policy.content }}
+						</div>
+						<p class="margin-bottom-25" style="padding-left:24px;">
+							<input type="checkbox" id="return_policy_agreement" name="return_policy_agreement" required />
+							<label for="return_policy_agreement">By selecting this box, you are agreeing to The Archive's return policy.</label>
+						</p>
+			    </div>
+			    <div class="modal-footer">
+						{% if additional_checkout_buttons %}
+						<div class="additional-checkout-buttons modal-action">
+							{{ content_for_additional_checkout_buttons }}
+						</div>
+						{% endif %}
+						<input type="submit" name="checkout" class="checkout-submit-button" value="CHECKOUT"></input>
+			    </div>
+			  </div>
+
+		</form>
+
+		{% else %}
+
+		<div class="page-wrap">
+			<div class="col s6 center margin-top-25">
+				<h4>Your cart is currently empty.</h4>
+				<h5>Continue browsing <a href="/collections" class="ylw">here</a>.</h5>
+			</div>
+		</div>
+
+		{% endif %}
+	</div>
+</div>

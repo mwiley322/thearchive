@@ -1,0 +1,220 @@
+{% assign price_hidden = false %}
+{% for tag in product.tags %}
+    {% if tag == 'price hidden' %}
+        {% assign price_hidden = true %}
+    {% endif %}
+{% endfor %}
+
+<div class="page_content margin-top-25 margin-bottom-75" itemscope itemtype="http://schema.org/Product">
+    <meta itemprop="url" content="{{ shop.url }}{{ product.url }}" />
+    <meta itemprop="image" content="{{ product.featured_image.src | product_img_url: 'grande' }}" />
+    <div class="prod_single{% unless product.available %} prod_sold_out{% endunless %}">
+        <p class="container margin-bottom-50 desktop-display" style="padding-left:25px"><a href="/collections/" style="margin-right:10px">COLLECTIONS</a> / <a href="/collections/{{ product.vendor | handleize }}" style="margin-left:10px;margin-right:10px">{{ product.vendor | upcase }}</a> / <span style="margin-left:10px">{{ product.title | upcase }}</span></p>
+        <div class="row">
+          <div class="desktop-display col s2">
+        		<ul style="margin-top:-66px">
+        			<li>
+        				<a id="categories-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> CATEGORIES</a>
+        			</li>
+        				<ul class="categories-dropdown">
+        					{% for link in linklists.categories.links %}
+        						{% if collection.handle == 'new-arrivals' %}
+        							<li class="{% if link.active or parent_link_active %}active{% endif %}">
+        								<a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+        							</li>
+        						{% else %}
+        							<li class="{% if link.active or parent_link_active %}active{% endif %}">
+        								<a href="{{ link.url }}">{{ link.title }}</a>
+        							</li>
+        						{% endif %}
+        					{% endfor %}
+        	      </ul>
+        			<li class="margin-top-25">
+        				<a id="designers-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> DESIGNERS</a>
+        			</li>
+        			<ul class="designers-dropdown">
+        				{% for link in linklists.designers.links %}
+        					{% if collection.handle == 'new-arrivals' %}
+        						<li class="{% if link.active or parent_link_active %}active{% endif %}">
+        							<a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+        						</li>
+        					{% else %}
+        						<li class="{% if link.active or parent_link_active %}active{% endif %}">
+        							<a href="{{ link.url }}">{{ link.title }}</a>
+        						</li>
+        					{% endif %}
+        				{% endfor %}
+        			</ul>
+        		</ul>
+        	</div>
+          <!--  -->
+          <div class="">
+            <div class="col s1 m1 l1 xl1 desktop-display">
+                {% if product.images.size > 1 %}
+                    <ul>
+                        {% for image in product.images %}
+                            <li class="prod_photo_thumb">
+                                <a class="gallery{% if forloop.first %} zoomThumbActive{% endif %}" href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'http:{{ image.src | product_img_url: 'grande' }}', largeimage: 'http:{{ image.src | product_img_url: 'original' }}'}">
+                                    <img src="{{ image.src | product_img_url: 'compact' }}" style="height:80px" />
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+            <div class="col s12 m3 l3 xl3">
+                <div class="mobile-display">
+                  <h6 itemprop="brand"><a href="/collections/{{ product.vendor | handleize }}">{{ product.vendor | upcase }}</a></h6>
+                  <h3 itemprop="name" style="margin-top:0;margin-bottom:0">{{ product.title }}</h3>
+                  <div class="prod_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                      <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+                      {% if product.available %}
+                      <link itemprop="availability" href="http://schema.org/InStock" />
+                      {% else %}
+                      <link itemprop="availability" href="http://schema.org/OutOfStock" />
+                      {% endif %}
+                      <p class="margin-bottom-50">
+                        {% if price_hidden == false %}
+                          {% if product.compare_at_price > product.price %}
+                            <s class="prod_compare_price">{% include 'price' with product.compare_at_price_max %}</s>
+                            <span class="prod_price on-sale" itemprop="price">{% include 'price' with product.price %}</span>
+                          {% else %}
+                            <span class="prod_price" itemprop="price">{% include 'price' with product.price %}</span>
+                          {% endif %}
+                        {% endif %}
+                      </p>
+                  </div>
+                </div>
+                <a href="{{ product.featured_image.src | product_img_url: 'original' }}" rel="gal1" class="prod_zoom">
+                    <img src="{{ product.featured_image.src | product_img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" class="center" />
+                </a>
+                <div class="mobile-display">
+                    {% if product.images.size > 1 %}
+                        <ul class="mobile-product-thumbs">
+                            {% for image in product.images %}
+                                <li class="prod_photo_thumb">
+                                    <a class="gallery{% if forloop.first %} zoomThumbActive{% endif %}" href="javascript:void(0);" rel="{gallery: 'gal1', smallimage: 'http:{{ image.src | product_img_url: 'grande' }}', largeimage: 'http:{{ image.src | product_img_url: 'original' }}'}">
+                                        <img src="{{ image.src | product_img_url: 'compact' }}" class="mobile-product-thumb-image" />
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                <div class="addthis_inline_share_toolbox center" style="padding-top: 40px"></div>
+            </div>
+            <div class="col s12 m6 l6 xl6 product-info">
+                <div class="desktop-display">
+                    <h6 itemprop="brand"><a href="/collections/{{ product.vendor | handleize }}">{{ product.vendor | upcase }}</a></h6>
+                    <h3 itemprop="name" style="margin-top:0;margin-bottom:0">{{ product.title }}</h3>
+                    <div class="prod_price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                        <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
+                        {% if product.available %}
+                        <link itemprop="availability" href="http://schema.org/InStock" />
+                        {% else %}
+                        <link itemprop="availability" href="http://schema.org/OutOfStock" />
+                        {% endif %}
+                        <p class="margin-bottom-50">
+                            {% if price_hidden == false %}
+                                {% if product.compare_at_price > product.price %}
+                                    <s class="prod_compare_price">{% include 'price' with product.compare_at_price_max %}</s>
+                                    <span class="prod_price on-sale" itemprop="price">{% include 'price' with product.price %}</span>
+                                {% else %}
+                                    <span class="prod_price" itemprop="price">{% include 'price' with product.price %}</span>
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                    </div>
+                </div>
+                <ul class="margin-top-25 margin-bottom-50">
+                    <li>
+                      <p>DETAILS</p>
+                        <div class="prod_description" itemprop="description">
+                            {{ product.description }}
+                        </div>
+                    </li>
+                </ul>
+                    <form id="add_to_cart" action="/cart/add" method="post" enctype="multipart/form-data">
+                        <div class="prod_variants margin-bottom-50">
+                            <p>SELECT AN OPTION</p>
+                            {% for variant in product.variants %}
+                                <div class="prod_variant">
+                                    <input type="radio" name="id" id="{{ variant.id }}" class="with-gap" value="{{ variant.id }}" required {% unless variant.available %} disabled="disabled" {% endunless %}>
+                                    <label for="{{ variant.id }}">
+                                        {{ variant.title }}{% unless price_hidden == true %}<span class="variant_price"> - {{ variant.price | money }}</span>{% endunless %}
+                                    </label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <div class="product_vendor_detail">
+                            <p>
+                              <input type="hidden" id="product_vendor" name="properties[Vendor]" value="{{ product.vendor }}" />
+                            </p>
+                        </div>
+                        <input type="submit" name="add" id="add" class="btn-yellow" onclick="location.reload();" value="ADD TO CART">
+                        <a href="#product-inquire-modal" class="btn-black" style="margin-left:10px">Inquire</a>
+                    </form>
+                </div>
+              </div>
+                <!--  -->
+            </div>
+        </div>
+    </div>
+
+		{% include 'product-inquiry-modal' %}
+
+<script>
+jQuery(function($) {
+    $('form[id="add_to_cart"]').submit(function(event) {
+      event.preventDefault();
+      var product;
+      if ( $('.prod_variant input:checked').length ) {
+        product = $('.prod_variant input:checked').val();
+      } else {
+        alert('Please select an option');
+        return false;
+      }
+      Shopify.addItemFromForm('add_to_cart', function() {
+            var prevItemCount = $('.cart').data('item-count'),
+                newItemCount = prevItemCount + 1;
+            $('body').animate({ scrollTop: 0 }, 400);
+            $('.customer_links .add_cart').fadeIn('fast').delay(2000).fadeOut('slow');
+            $('.cart').data('itemcv -count', newItemCount).html(newItemCount);
+        });
+    });
+    // Check to see if prices of variants are the same
+    Array.prototype.AllValuesSame = function(){
+        if(this.length > 0) {
+            for(var i = 1; i < this.length; i++)
+            {
+                if(this[i] !== this[0])
+                    return false;
+            }
+        }
+        return true;
+    }
+    var varPrices = [];
+    {% for variant in product.variants %}
+        {% unless forloop.length == 1 %}
+            varPrices.push({{ variant.price }});
+        {% endunless %}
+    {% endfor %}
+    if ( varPrices.AllValuesSame() ) {
+        $('.variant_price').addClass('hidden');
+        // $('.prod_variant').css('display', 'inline-block');
+    } else {
+        return false;
+    }
+    // Disable sold-out items
+    $('label.sold-out').hover(function() {
+            $('#add').val('Sold Out').addClass('icon disabled').attr('disabled', 'disabled');
+        }, function() {
+            if($('.prod_sold_out').length != 1) {
+                $('#add').val('Add to Cart').removeAttr('disabled').removeClass('icon disabled');
+            }
+        }).siblings('input').attr('disabled', 'disabled');
+    if($('.prod_sold_out').length) {
+        $('#add').val('Sold Out').addClass('icon disabled').attr('disabled', 'disabled');
+    }
+});
+</script>

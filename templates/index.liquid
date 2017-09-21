@@ -1,0 +1,90 @@
+{% assign page = pages.frontpage %}
+
+<div class="carousel carousel-slider slideshow margin-top-25 desktop-display" data-indicators="true">
+	{% if settings.home_slide_1_img != empty %}
+	  <div class="carousel-item slide_1">
+			<div class="carousel-content-container center" style="color:{% if settings.home_slide_1_asset_color == 'white' %}white{% elsif settings.home_slide_1_asset_color == 'black' %}black{% elsif settings.home_slide_1_asset_color == 'yellow' %}#d7cf35{% endif %}">
+				{% unless settings.home_slide_1_img_alt == empty %}
+					<h2 class="carousel-header">{{ settings.home_slide_1_img_alt }}</h2>
+				{% endunless %}
+				{% unless settings.home_slide_1_button_text == empty %}
+					<a href="{{ settings.home_slide_1_button_link }}" style="color:{% if settings.home_slide_1_asset_color == 'white' %}white{% elsif settings.home_slide_1_asset_color == 'black' %}black{% elsif settings.home_slide_1_asset_color == 'yellow' %}#d7cf35{% endif %}">{{ settings.home_slide_1_button_text | upcase }} <i class="fa fa-chevron-right" aria-hidden="true" style="margin-left:10px"></i></a>
+				{% endunless %}
+			</div>
+	  </div>
+	{% endif %}
+	{% if settings.home_slide_2_img != empty %}
+	  <div class="carousel-item white-text slide_2">
+			<div class="carousel-content-container center" style="color:{% if settings.home_slide_2_asset_color == 'white' %}white{% elsif settings.home_slide_2_asset_color == 'black' %}black{% elsif settings.home_slide_2_asset_color == 'yellow' %}#d7cf35{% endif %}">
+				{% unless settings.home_slide_2_img_alt == empty %}
+					<h2 class="carousel-header">{{ settings.home_slide_2_img_alt }}</h2>
+				{% endunless %}
+				{% unless settings.home_slide_2_button_text == empty %}
+					<a href="{{ settings.home_slide_2_button_link }}" style="color:{% if settings.home_slide_2_asset_color == 'white' %}white{% elsif settings.home_slide_2_asset_color == 'black' %}black{% elsif settings.home_slide_2_asset_color == 'yellow' %}#d7cf35{% endif %}">{{ settings.home_slide_2_button_text | upcase }} <i class="fa fa-chevron-right" aria-hidden="true" style="margin-left:10px"></i></a>
+				{% endunless %}
+			</div>
+	  </div>
+	{% endif %}
+	{% if settings.home_slide_3_img != empty %}
+	  <div class="carousel-item white-text slide_3">
+			<div class="carousel-content-container center" style="color:{% if settings.home_slide_3_asset_color == 'white' %}white{% elsif settings.home_slide_3_asset_color == 'black' %}black{% elsif settings.home_slide_3_asset_color == 'yellow' %}#d7cf35{% endif %}">
+			  {% unless settings.home_slide_3_img_alt == empty %}
+			    <h2 class="carousel-header">{{ settings.home_slide_3_img_alt }}</h2>
+			  {% endunless %}
+			  {% unless settings.home_slide_3_button_text == empty %}
+			    <a href="{{ settings.home_slide_3_button_link }}" style="color:{% if settings.home_slide_3_asset_color == 'white' %}white{% elsif settings.home_slide_3_asset_color == 'black' %}black{% elsif settings.home_slide_3_asset_color == 'yellow' %}#d7cf35{% endif %}">{{ settings.home_slide_3_button_text | upcase }} <i class="fa fa-chevron-right" aria-hidden="true" style="margin-left:10px"></i></a>
+			  {% endunless %}
+			</div>
+	  </div>
+	{% endif %}
+	{% if settings.home_slide_4_img != empty %}
+	  <div class="carousel-item white-text slide_4">
+			<div class="carousel-content-container center" style="color:{% if settings.home_slide_4_asset_color == 'white' %}white{% elsif settings.home_slide_4_asset_color == 'black' %}black{% elsif settings.home_slide_4_asset_color == 'yellow' %}#d7cf35{% endif %}">
+			  {% unless settings.home_slide_4_img_alt == empty %}
+			    <h2 class="carousel-header">{{ settings.home_slide_4_img_alt }}</h2>
+			  {% endunless %}
+			  {% unless settings.home_slide_4_button_text == empty %}
+			    <a href="{{ settings.home_slide_4_button_link }}" style="color:{% if settings.home_slide_4_asset_color == 'white' %}white{% elsif settings.home_slide_4_asset_color == 'black' %}black{% elsif settings.home_slide_4_asset_color == 'yellow' %}#d7cf35{% endif %}">{{ settings.home_slide_4_button_text | upcase }} <i class="fa fa-chevron-right" aria-hidden="true" style="margin-left:10px"></i></a>
+			  {% endunless %}
+			</div>
+	  </div>
+	{% endif %}
+</div>
+
+<div class="mobile-display slideshow">
+	{% if settings.home_slide_1_img != empty %}
+	  <div class="slide_1 mobile-carousel-photo">
+			<div class="carousel-content-container center" style="color:{% if settings.home_slide_1_asset_color == 'white' %}white{% elsif settings.home_slide_1_asset_color == 'black' %}black{% elsif settings.home_slide_1_asset_color == 'yellow' %}#d7cf35{% endif %}">
+				{% unless settings.home_slide_1_img_alt == empty %}
+					<h2 class="mobile-carousel-header">{{ settings.home_slide_1_img_alt }}</h2>
+				{% endunless %}
+				{% unless settings.home_slide_1_button_text == empty %}
+					<a href="{{ settings.home_slide_1_button_link }}" style="color:{% if settings.home_slide_1_asset_color == 'white' %}white{% elsif settings.home_slide_1_asset_color == 'black' %}black{% elsif settings.home_slide_1_asset_color == 'yellow' %}#d7cf35{% endif %}">{{ settings.home_slide_1_button_text | upcase }} <i class="fa fa-chevron-right" aria-hidden="true" style="margin-left:10px"></i></a>
+				{% endunless %}
+			</div>
+	  </div>
+	{% endif %}
+</div>
+
+	<div class="main__promotional row center">
+		<a href="{{ settings.featured_section_1_link }}">
+			<div class="col s12 m6 l6 xl6">
+				<div id="new-arrivals-frontpage">
+					<h4 class="center" id="new-arrivals-text" style="color:{% if settings.featured_section_1_text_color == 'white' %}white{% elsif settings.featured_section_1_text_color == 'black' %}black{% elsif settings.featured_section_1_text_color == 'yellow' %}#d7cf35{% endif %}">{{ settings.featured_section_1_text | upcase }}</h4>
+				</div>
+			</div>
+		</a>
+		<a href="{{ settings.featured_section_2_link }}">
+			<div class="col s12 m6 l6 xl6">
+				<div id="sale-items">
+					<h4 id="sale-items-text" style="color:{% if settings.featured_section_2_text_color == 'white' %}white{% elsif settings.featured_section_2_text_color == 'black' %}black{% elsif settings.featured_section_2_text_color == 'yellow' %}#d7cf35{% endif %}">{{ settings.featured_section_2_text | upcase }}</h4>
+				</div>
+			</div>
+		</a>
+	</div>
+
+<div class="instafeed-app">
+	<hr>
+	<a href="{{ settings.archive_ig }}" target="_blank"><h3 class="center spaced-h3" style="margin: 60px 0;">@THEARCHIVESF</h3></a>
+	<div id="insta-feed"></div>
+</div>

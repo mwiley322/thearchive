@@ -1,0 +1,7 @@
+{% assign archive_price = price | money | split: '.' %}
+
+{% if archive_price.last == '00' %}
+	{{ archive_price.first }}
+{% else %}
+	{{ archive_price | money }}
+{% endif %}

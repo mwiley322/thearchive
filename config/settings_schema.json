@@ -1,0 +1,314 @@
+[
+  {
+    "name": "Welcome",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Theme settings allow designers to provide an easy way for any user to customize the look and feel of their shop without having to delve into HTML or CSS code. Please see our [help page on theme settings](http:\/\/wiki.shopify.com\/Theme_Settings) to learn more about how you can make your theme customizable."
+      }
+    ]
+  },
+  {
+    "name": "Homepage",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Slide 1 Options"
+      },
+      {
+        "type": "image",
+        "id": "home_slide_1_img.jpg",
+        "label": "Slide Image:",
+        "max-width": 1920,
+        "max-height": 1080
+      },
+      {
+        "type": "text",
+        "id": "home_slide_1_img_alt",
+        "label": "Call Out Text"
+      },
+      {
+        "type": "select",
+        "id": "home_slide_1_asset_color",
+        "label": "Text Color",
+        "options": [
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "yellow",
+            "label": "Yellow"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "home_slide_1_button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "home_slide_1_button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Slide 2 Options"
+      },
+      {
+        "type": "image",
+        "id": "home_slide_2_img.jpg",
+        "label": "Slide Image:",
+        "max-width": 1920,
+        "max-height": 1080
+      },
+      {
+        "type": "text",
+        "id": "home_slide_2_img_alt",
+        "label": "Call Out Text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Select a color for the homepage assets (e.g. logo, text, icons) for the best visibility over the color overlay and slide image."
+      },
+      {
+        "type": "select",
+        "id": "home_slide_2_asset_color",
+        "label": "Slide Asset Color",
+        "options": [
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "home_slide_2_button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "home_slide_2_button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Slide 3 Options"
+      },
+      {
+        "type": "image",
+        "id": "home_slide_3_img.jpg",
+        "label": "Slide Image:",
+        "max-width": 1920,
+        "max-height": 1080
+      },
+      {
+        "type": "text",
+        "id": "home_slide_3_img_alt",
+        "label": "Call Out Text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Select a color for the homepage assets (e.g. logo, text, icons) for the best visibility over the color overlay and slide image."
+      },
+      {
+        "type": "select",
+        "id": "home_slide_3_asset_color",
+        "label": "Slide Asset Color",
+        "options": [
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "home_slide_3_button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "home_slide_3_button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Slide 4 Options"
+      },
+      {
+        "type": "image",
+        "id": "home_slide_4_img.jpg",
+        "label": "Slide Image:",
+        "max-width": 1920,
+        "max-height": 1080
+      },
+      {
+        "type": "text",
+        "id": "home_slide_4_img_alt",
+        "label": "Call Out Text"
+      },
+      {
+        "type": "paragraph",
+        "content": "Select a color for the homepage assets (e.g. logo, text, icons) for the best visibility over the color overlay and slide image."
+      },
+      {
+        "type": "select",
+        "id": "home_slide_4_asset_color",
+        "label": "Slide Asset Color",
+        "options": [
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "home_slide_4_button_text",
+        "label": "Button Text"
+      },
+      {
+        "type": "text",
+        "id": "home_slide_4_button_link",
+        "label": "Button Link"
+      },
+      {
+        "type": "header",
+        "content": "Featured Section 1"
+      },
+      {
+        "type": "image",
+        "id": "featured_section_1_img.jpg",
+        "label": "Slide Image:",
+        "max-width": 1920,
+        "max-height": 1080
+      },
+      {
+        "type": "text",
+        "id": "featured_section_1_text",
+        "label": "Title"
+      },
+      {
+        "type": "select",
+        "id": "featured_section_1_text_color",
+        "label": "Text Color",
+        "options": [
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "yellow",
+            "label": "Yellow"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "featured_section_1_link",
+        "label": "Link URL"
+      },
+      {
+        "type": "header",
+        "content": "Featured Section 2"
+      },
+      {
+        "type": "image",
+        "id": "featured_section_2_img.jpg",
+        "label": "Slide Image:",
+        "max-width": 1920,
+        "max-height": 1080
+      },
+      {
+        "type": "text",
+        "id": "featured_section_2_text",
+        "label": "Title"
+      },
+      {
+        "type": "select",
+        "id": "featured_section_2_text_color",
+        "label": "Text Color",
+        "options": [
+          {
+            "value": "black",
+            "label": "Black"
+          },
+          {
+            "value": "white",
+            "label": "White"
+          },
+          {
+            "value": "yellow",
+            "label": "Yellow"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "id": "featured_section_2_link",
+        "label": "Link URL"
+      }
+    ]
+  },
+  {
+    "name": "Footer",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Social Links"
+      },
+      {
+        "type": "text",
+        "id": "archive_email",
+        "label": "Email Address:"
+      },
+      {
+        "type": "text",
+        "id": "archive_fb",
+        "label": "Facebook Link:"
+      },
+      {
+        "type": "text",
+        "id": "archive_ig",
+        "label": "Instagram Link:"
+      },
+      {
+        "type": "text",
+        "id": "phone_number",
+        "label": "Business phone number:"
+      },
+      {
+        "type": "header",
+        "content": "Contact Info"
+      },
+      {
+        "type": "textarea",
+        "id": "footer_text",
+        "label": "Footer Text:"
+      }
+    ]
+  }
+]

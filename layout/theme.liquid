@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="Expires" content="30" />
+
+		<!-- PAGE TITLE -->
+		<title>
+			{% if template == 'index' %}
+				{% if page_title contains 'Welcome' %}
+					{{ shop.name }} &ndash; Welcome
+				{% else %}
+					{{ page_title }}
+				{% endif %}
+			{% elsif template == '404' %}
+				Page Not Found
+			{% elsif page_title contains shop.name %}
+				{{ page_title }}
+			{% else %}
+				{{ page_title }} &ndash; {{ shop.name }}
+			{% endif %}
+		</title>
+
+		{% if page_description %}
+			<meta name="description" content="{{ page_description }}" />
+		{% endif %}
+
+		<link rel="canonical" href="{{ canonical_url }}" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=yes">
+
+		{{ content_for_header }}
+
+		{{ 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css' | stylesheet_tag }}
+		{{ 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' | stylesheet_tag }}
+		{{ 'style.scss.css' | asset_url | stylesheet_tag }}
+
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+		{% if template contains 'customers' %}
+			{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+			{{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+		{% endif %}
+
+		{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+		{{ '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' | script_tag }}
+
+		{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
+
+		{% if template == 'product' %}
+			{{ 'jquery.jqzoom.css' | asset_url | stylesheet_tag }}
+		{% endif %}
+		<!-- FONT AWESOME ICON SCRIPT -->
+		{{ 'https://use.fontawesome.com/caa5c82995.js' | script_tag }}
+	</head>
+
+	<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+		<div id="loadingMask" style="display: none;">
+			<img class="logo" src="{{ 'logo_white.png' | asset_url }}" alt="The Archive" style="display: none;">
+			<img class="loading" src="{{ 'loading.gif' | asset_url }}" alt="Loading" style="display: none;">
+		</div>
+		<script type="text/javascript">
+			document.getElementById("loadingMask").style.display = "block";
+		</script>
+
+
+		<div class="col l12 m12 s12">
+			{% assign main_nav = true %}
+			{% if template == 'collection' or blog.all_tags != blank %}
+				{% assign main_nav = false %}
+			{% endif %}
+
+			<!-- Top Nav & Mobile Side Nav -->
+			{% include 'main-nav' %}
+
+			<!-- Page Content -->
+			<div class="content-buffer">
+				{{ content_for_layout }}
+			</div>
+
+
+			<!-- Footer -->
+		</div>
+		{% include 'footer' %}
+
+
+		<!-- SCRIPTS -->
+
+		{{ 'plugins.js'  | asset_url | script_tag }}
+		{{ 'shop.js'  | asset_url | script_tag }}
+
+		<!-- 'ADD THIS' SOCIAL SHARING SCRIPT -->
+		{{ '//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-593f4c1008206644' | script_tag }}
+		<!-- MATERIALIZE JS SCRIPT -->
+		{{ 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js' | script_tag }}
+
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<!-- INDIVIDUAL DESIGNER COLLECTION -->
+{% paginate collection.products by 48 %}
+
+<div class="row">
+	<div class="desktop-display col s2">
+		<div class="sticky-sidebar">
+			<div class="scroller" style="margin-top:20px;">
+				<ul class="margin-top-25">
+					<li>
+						<a id="categories-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> CATEGORIES</a>
+					</li>
+						<ul class="categories-dropdown">
+							{% for link in linklists.categories.links %}
+								{% if collection.handle == 'new-arrivals' %}
+									<li class="{% if link.active or parent_link_active %}active{% endif %}">
+										<a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+									</li>
+								{% else %}
+									<li class="{% if link.active or parent_link_active %}active{% endif %}">
+										<a href="{{ link.url }}">{{ link.title }}</a>
+									</li>
+								{% endif %}
+							{% endfor %}
+						</ul>
+					<li class="margin-top-25">
+						<a id="designers-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> DESIGNERS</a>
+					</li>
+					<ul class="designers-dropdown">
+						{% for link in linklists.designers.links %}
+							{% if collection.handle == 'new-arrivals' %}
+								<li class="{% if link.active or parent_link_active %}active{% endif %}">
+									<a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+								</li>
+							{% else %}
+								<li class="{% if link.active or parent_link_active %}active{% endif %}">
+									<a href="{{ link.url }}">{{ link.title }}</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+						<div style="height: 360px"></div>
+					</ul>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="desktop-display col s10 right-side-scroll-content">
+		<div class="margin-top-25 center">
+			{% if collection.image %}
+				<img src="{{ collection.image | collection_img_url: 'master' }}" alt="{{ collection.title }}" height="100%" />
+			{% endif %}
+		</div>
+		{% if collection.description.size > 0 %}
+			<div class="collection-description margin-50 center">
+				<div class="collection-description-divider">
+					<hr>
+				</div>
+				<h4 class="margin-25" style="line-height:1.8; font-weight:300">{{ collection.description }}</h4>
+				<div class="collection-description-divider">
+					<hr>
+				</div>
+			</div>
+		{% else %}
+			<div class="margin-25"></div>
+		{% endif %}
+		<div style="display:flex; flex-wrap: wrap; justify-content:flex-start">
+			{% for product in collection.products %}
+				{% include 'products-index' %}
+			{% else %}
+				<p>There are no products in this view.</p>
+			{% endfor %}
+		</div>
+		<div class="center margin-50">
+			{% include 'pagination' %}
+		</div>
+	</div>
+	<div class="container mobile-display">
+		<div class="center margin-bottom-25">
+			{% if collection.image %}
+				<img src="{{ collection.image | collection_img_url: 'master' }}" alt="{{ collection.title }}" width="100%" />
+			{% endif %}
+		</div>
+		{% if collection.description.size > 0 %}
+			<div class="collection-description margin-50 center">
+				<div class="collection-description-divider">
+					<hr>
+				</div>
+				<h5 class="margin-25" style="line-height:2">{{ collection.description }}</h5>
+				<div class="collection-description-divider">
+					<hr>
+				</div>
+			</div>
+		{% endif %}
+		<div style="display:flex; flex-wrap: wrap; justify-content:flex-start">
+			{% for product in collection.products %}
+				{% include 'products-index' %}
+			{% else %}
+				<p>There are no products in this view.</p>
+			{% endfor %}
+		</div>
+		<div class="center margin-50">
+			{% include 'pagination' %}
+		</div>
+	</div>
+</div>
+
+
+{% endpaginate %}

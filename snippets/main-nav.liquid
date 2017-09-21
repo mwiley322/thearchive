@@ -1,0 +1,92 @@
+<nav class="main__nav navbar-fixed">
+	<div class="row" id="mobile-cart">
+		<div class="col m3 s3 left" style="padding: 0;">
+			<a href="#" data-activates="slide-out" class="button-collapse"><i class="fa fa-2x fa-bars" aria-hidden="true"></i></a>
+		</div>
+		<div class="col m6 s6 center" style="padding-right: 30px;">
+			<a href="/" style="line-height: 62px;"><img src="{{ 'logo_white.png' | asset_url }}" class="responsive-img" id="nav_logo"></a>
+		</div>
+		<div class="col m3 s3" style="text-align: right; padding-right: 15px;">
+			<a href="/cart"><i class="fa fa-2x fa-shopping-cart" style="padding-right: 5px;" aria-hidden="true"></i></a>
+			<a href="/cart" class="ylw" id="item-count" data-item-count="{{ cart.item_count }}">
+				({{ cart.item_count }})
+			</a>
+		</div>
+	</div>
+	{% if shop.customer_accounts_enabled %}
+		<div class="row" id="nav_customer-links">
+			{% if customer %}
+				<a class="nav-customer-link" href="/account">MY ACCOUNT</a> | <a class="nav-customer-link" href="/account/logout">LOG OUT</a>
+			{% else %}
+				<a href="/account/login" class="nav-customer-link">MY ACCOUNT</a>
+			{% endif %}
+		</div>
+	{% endif %}
+	<div class="row" id="wrap" style="margin:0">
+		<ul id="navbar">
+			<li><a href="/"><img src="{{ 'logo_white.png' | asset_url }}" id="site_title"></a></li>
+			<li><a href="/collections">SHOP COLLECTIONS</a></li>
+			<li><a href="/collections/sale">SALE</a></li>
+			<li><a href="/blogs/news">BLOG</a></li>
+		</ul>
+	</div>
+	<div class="row" id="nav_icons">
+		<form method="get" action="/search" autocomplete="on" style="padding-right: 25px; display: inline-block">
+			<input id="search-input" type="text" name="q" placeholder="Search our store" class="search-bar" />
+			<input type="submit" style="display:none" />
+      <input type="hidden" name="type" value="product" />
+		</form>
+		<i id="search-icon" class="fa fa-search" aria-hidden="true" style="padding-right: 25px"></i>
+		<a href="/cart"><i class="fa fa-shopping-cart" style="padding-right: 5px;" aria-hidden="true"></i></a>
+		<span>
+			<a href="/cart" class="ylw" data-item-count="{{ cart.item_count }}">
+				({{ cart.item_count }})
+			</a>
+		</span>
+	</div>
+</nav>
+
+<!-- Mobile Side Navigation -->
+<ul id="slide-out" class="side-nav">
+	<li><a href="/" style="text-align:center"><img src="{{ 'logo_white.png' | asset_url }}" style="padding-top:20px" id="site_title"></a></li>
+	<li class="margin-top-25"><a href="/collections">COLLECTIONS</a></li>
+	<li><a href="/collections/new-arrivals">NEW ARRIVALS</a></li>
+	<li><a href="/collections/sale">SALE</a></li>
+	<li><a href="/blogs/news">BLOG</a></li>
+	<li><a id="mobile-categories-dropdown-link">CATEGORIES<i class="fa fa-caret-down right" style="color:white" aria-hidden="true"></i></a></li>
+
+      <ul class="mobile-categories-dropdown-content">
+				{% for link in linklists.categories.links %}
+					<li class="{% if link.active or parent_link_active %}active{% endif %}">
+						<a href="{{ link.url }}">{{ link.title }}</a>
+					</li>
+				{% endfor %}
+      </ul>
+
+	<li><a id="mobile-designers-dropdown-link">DESIGNERS<i class="fa fa-caret-down right" style="color:white" aria-hidden="true"></i></a></li>
+
+		<ul class="mobile-designers-dropdown-content">
+			{% for link in linklists.designers.links %}
+				<li class="{% if link.active or parent_link_active %}active{% endif %}">
+					<a href="{{ link.url }}">{{ link.title }}</a>
+				</li>
+			{% endfor %}
+		</ul>
+	<hr style="margin-top:50px">
+	<li class="margin-top-50 margin-bottom-50 center">
+		<form method="get" action="/search" autocomplete="on" style="display: flex;margin-left: 30px;">
+			<input id="search-input" type="text" name="q" placeholder="Search our store" style="border:1px solid white;margin:0;padding-left:15px;width:60%" />
+			<button type="submit" class="mobile-search-submit">
+  			<i class="fa fa-search" style="font-size:16px" aria-hidden="true"></i>
+			</button>
+			<input type="hidden" name="type" value="product" />
+		</form>
+	</li>
+	<div class="center">
+		{% if customer %}
+			<a href="/account">MY ACCOUNT</a> | <a href="/account/logout">LOG OUT</a>
+		{% else %}
+			{{ 'MY ACCOUNT' | customer_login_link }}
+		{% endif %}
+	</div>
+</ul>

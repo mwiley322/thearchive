@@ -1,0 +1,19 @@
+{% unless shop.enabled_payment_types == empty %}
+    <ul class="payment-icons-list">
+      <li>
+        <img src="{{ 'amex.png' | asset_url }}" class="payment-icon">
+      </li>
+      <li>
+        <img src="{{ 'jcb.png' | asset_url }}" class="payment-icon">
+      </li>
+      <li>
+        <img src="{{ 'mastercard.png' | asset_url }}" class="payment-icon">
+      </li>
+      <li>
+        <img src="{{ 'paypal.png' | asset_url }}" class="payment-icon">
+      </li>
+      <li>
+        <img src="{{ 'visa.png' | asset_url }}" class="payment-icon">
+      </li>
+    </ul>
+  {% endunless %}

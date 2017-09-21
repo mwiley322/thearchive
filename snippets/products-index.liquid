@@ -1,0 +1,74 @@
+{% assign price_hidden = false %}
+{% for tag in product.tags %}
+	{% if tag == 'price hidden' %}
+		{% assign price_hidden = true %}
+	{% endif %}
+{% endfor %}
+
+<div class="shop-page-product-container center" style="margin-bottom: 12px">
+	<a href="{{ product.url | within: collection }}">
+		<img src="{{ product.featured_image.src | product_img_url: 'large' }}" alt="{{ product.title }} - {{ product.vendor }}" class="shop-page-image" />
+		<div>
+			{% if product.available == false %}
+				<div class="sold-out-or-sale-label sold-out-label">
+					[ SOLD OUT ]
+				</div>
+			{% else %}
+					{% if product.compare_at_price > product.price %}
+						{% if product.compare_at_price_max > product.price %}
+							<div class="sold-out-or-sale-label sale-label">
+								[ SALE ] {{ product.compare_at_price_max | minus: product.price | times: 100 | divided_by: product.compare_at_price_max | remove: '.0' }}% OFF
+							</div>
+						{% endif %}
+					{% endif %}
+			{% endif %}
+
+		</div>
+		<div class="desktop-display overlay">
+			<div class="overlay-text">
+				<p style="margin-bottom:0; color: #d7d04e;">{{ product.vendor | upcase }}</p>
+				<h5 style="margin-top:0;font-size:1vw">{{ product.title }}</h5>
+				{% if product.options.size > 0 %}
+					Sizes<br>
+					<span class="prod_variants{% if hide_default_title %} hidden{% endif %}">
+						{% for variant in product.variants %}
+							{% if forloop.last %}
+								<span{% unless variant.available %} class="sold-out"{% endunless %}>
+									{{ variant.option1 }}
+								</span>
+							{% else %}
+								<span{% unless variant.available %} class="sold-out"{% endunless %}>
+									{{ variant.option1 }}
+								</span> /
+							{% endif %}
+						{% endfor %}
+					</span>
+				{% endif %}
+				<p>
+					{% if price_hidden == false %}
+						{% if product.compare_at_price > product.price %}
+							<s class="prod_compare_price">{% include 'price' with product.compare_at_price_max %}</s>
+							<span class="prod_price on-sale" itemprop="price">{% include 'price' with product.price %}</span>
+						{% else %}
+							<span class="prod_price" itemprop="price">{% include 'price' with product.price %}</span>
+						{% endif %}
+					{% endif %}
+				</p>
+			</div>
+		</div>
+	</a>
+	<div class="mobile-display center">
+		<p style="margin-bottom:0;font-size:10px">{{ product.vendor | upcase }}</p>
+		<p style="margin-top:0;margin-bottom:0">{{ product.title }}</p>
+		<p style="margin-top:5px">
+			{% if price_hidden == false %}
+				{% if product.compare_at_price > product.price %}
+					<s class="prod_compare_price">{% include 'price' with product.compare_at_price_max %}</s>
+					<span class="prod_price on-sale" itemprop="price">{% include 'price' with product.price %}</span>
+				{% else %}
+					<span class="prod_price" itemprop="price">{% include 'price' with product.price %}</span>
+				{% endif %}
+			{% endif %}
+		</p>
+	</div>
+</div>

@@ -1,0 +1,582 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block;
+}
+
+/* =Fonts
+----------------------------------------------- */
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url("anonymouspro-regular-webfont.eot");
+  src: url("anonymouspro-regular-webfont.eot?#iefix") format("embedded-opentype"), url("anonymouspro-regular-webfont.woff") format("woff"), url("anonymouspro-regular-webfont.ttf") format("truetype"), url("anonymouspro-regular-webfont.svg#anonymouspro") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url("anonymouspro-bold-webfont.eot");
+  src: url("anonymouspro-bold-webfont.eot?#iefix") format("embedded-opentype"), url("anonymouspro-bold-webfont.woff") format("woff"), url("anonymouspro-bold-webfont.ttf") format("truetype"), url("anonymouspro-bold-webfont.svg#anonymouspro") format("svg");
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url("anonymouspro-italic-webfont.eot");
+  src: url("anonymouspro-italic-webfont.eot?#iefix") format("embedded-opentype"), url("anonymouspro-italic-webfont.woff") format("woff"), url("anonymouspro-italic-webfont.ttf") format("truetype"), url("anonymouspro-italic-webfont.svg#anonymouspro") format("svg");
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Anonymous Pro';
+  src: url("anonymouspro-bolditalic-webfont.eot");
+  src: url("anonymouspro-bolditalic-webfont.eot?#iefix") format("embedded-opentype"), url("anonymouspro-bolditalic-webfont.woff") format("woff"), url("anonymouspro-bolditalic-webfont.ttf") format("truetype"), url("anonymouspro-bolditalic-webfont.svg#anonymouspro") format("svg");
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* =Global
+----------------------------------------------- */
+body {
+  background: #000;
+  color: #ffffff;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  clear: both;
+}
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/* Text elements */
+h1 {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  margin-bottom: 0.5em;
+}
+
+h2 {
+  font-family: 'Anonymous Pro', Courier, monospace;
+  font-size: 14px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin-bottom: 1.0em;
+}
+
+h3 {
+  font-family: 'Anonymous Pro', Courier, monospace;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  line-height: 16px;
+  text-transform: uppercase;
+  margin-bottom: 1.0em;
+}
+
+h4 {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0em;
+  line-height: 16px;
+  margin-bottom: 1.0em;
+}
+
+h5 {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  letter-spacing: 0em;
+  line-height: 16px;
+  margin-bottom: 1.0em;
+}
+
+p {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0em;
+  line-height: 16px;
+  margin-bottom: 1.625em;
+}
+
+ul, ol {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0em;
+  margin: 0 0 1.625em 2.5em;
+}
+
+ul {
+  list-style: square;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ol ol {
+  list-style: upper-alpha;
+}
+
+ol ol ol {
+  list-style: lower-roman;
+}
+
+ol ol ol ol {
+  list-style: lower-alpha;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin-bottom: 0;
+}
+
+table {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  letter-spacing: 0em;
+  line-height: 16px;
+}
+
+dl {
+  margin: 0 1.625em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin-bottom: 1.625em;
+}
+
+strong {
+  font-weight: bold;
+}
+
+cite, em, i {
+  font-style: italic;
+}
+
+blockquote {
+  font-family: Georgia, "Bitstream Charter", serif;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: normal;
+  margin: 0 3em 0.83em;
+}
+
+blockquote em, blockquote i, blockquote cite {
+  font-style: normal;
+}
+
+blockquote cite {
+  color: #666;
+  font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+pre {
+  background: #f4f4f4;
+  font: 13px "Courier 10 Pitch", Courier, monospace;
+  line-height: 1.5;
+  margin-bottom: 1.625em;
+  overflow: auto;
+  padding: 0.75em 1.625em;
+}
+
+code, kbd, samp, var {
+  font: 13px Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+}
+
+abbr, acronym, dfn {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+
+address {
+  display: block;
+  margin: 0 0 1.625em;
+}
+
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+
+sup,
+sub {
+  font-size: 10px;
+  height: 0;
+  line-height: 1;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  bottom: 1ex;
+}
+
+sub {
+  top: .5ex;
+}
+
+/* Forms */
+label {
+  font-family: 'Anonymous Pro', Courier, monospace;
+  font-size: 12px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  margin: 5px 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=number],
+textarea {
+  background: #000;
+  font-family: 'Anonymous Pro', Courier, monospace;
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 0.1em;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  border: 1px solid #fff;
+}
+
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=password]:focus,
+input[type=number]:focus,
+textarea:focus {
+  color: #fff;
+  outline: none;
+  border: 1px solid #d7cf35;
+}
+
+input[type=submit] {
+  background-color: #d7cf35;
+  font-family: 'Anonymous Pro', Courier, monospace;
+  font-size: 14px;
+  color: #000;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin: 0;
+  border: none;
+  display: block;
+  cursor: pointer;
+  -webkit-transition: ease-in 0.1s all;
+  -moz-transition: ease-in 0.1s all;
+  -o-transition: ease-in 0.1s all;
+  transition: ease-in 0.1s all;
+}
+
+input[type=submit]:hover {
+  background-color: #fff;
+  -webkit-transition: all 0.1s ease-out;
+  -moz-transition: all 0.1s ease-out;
+  -o-transition: all 0.1s ease-out;
+  transition: all 0.1s ease-out;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+input[type=number],
+textarea {
+  padding: 10px;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #666;
+  text-transform: uppercase;
+}
+
+input:-moz-placeholder,
+textarea:-moz-placeholder {
+  /* Firefox 18- */
+  color: #666;
+  text-transform: uppercase;
+}
+
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  /* Firefox 19+ */
+  color: #666;
+  text-transform: uppercase;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #666;
+  text-transform: uppercase;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input.hint,
+textarea.hint {
+  color: #666;
+  text-transform: uppercase;
+}
+
+img, video, embed, iframe {
+  max-width: 100%;
+}
+
+/* Links */
+a {
+  color: #d7cf35;
+  text-decoration: none;
+  -webkit-transition: all 0.1s ease-in;
+  -moz-transition: all 0.1s ease-in;
+  -o-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+a:focus,
+a:active,
+a:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* =Body
+----------------------------------------------- */
+#header {
+  background: none;
+}
+#header #logo {
+  background: url("{{ 'logo_white.png' | asset_url }}") no-repeat top center;
+  width: 150px;
+  height: 30px;
+  margin: 20px 0;
+}
+#header #tagline {
+  display: none;
+}
+
+#main {
+  background: none;
+  border: none;
+}
+
+#overview {
+  background: none;
+  border-bottom: 1px solid #d7cf35;
+}
+#overview h2 {
+  color: #fff;
+}
+
+#products {
+  border-right-color: #d7cf35;
+}
+
+#thumbs div {
+  text-align: left;
+  margin-bottom: 10px;
+  border: none;
+}
+#thumbs span {
+  color: #d7cf35;
+}
+
+#cost {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  color: #fff;
+  font-size: 26px;
+  text-shadow: none;
+  margin-top: 30px;
+}
+
+#overview .hint {
+  font-style: normal;
+  font-family: 'Anonymous Pro';
+  font-size: 11px;
+}
+
+#steps {
+  font-style: normal;
+  font-family: 'Anonymous Pro';
+  font-size: 14px;
+  text-transform: uppercase;
+  line-height: 20px;
+}
+
+#overview .hint {
+  color: #d7cf35;
+}
+
+#email {
+  background-color: transparent;
+  border: none;
+}
+
+span.sign-in-message {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+
+h4.active-customer {
+  color: #fff;
+}
+
+#addresses {
+  background-color: transparent;
+  border-color: #d7cf35;
+}
+
+.group h3, .pgroup h3 {
+  color: #fff;
+  font-weight: normal;
+  text-shadow: none;
+  padding-bottom: 10px;
+}
+
+table td {
+  vertical-align: middle;
+}
+
+#billing-is-shipping td {
+  padding: 20px 5px 5px;
+}
+#billing-is-shipping label {
+  font-size: 11px;
+}
+
+.gright {
+  margin: 0;
+  float: right;
+}
+
+.address-notification {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+
+.form td input {
+  width: 200px;
+}
+
+#buttons {
+  background: transparent;
+  border-bottom-color: #d7cf35;
+}
+#buttons input {
+  padding: 15px 20px;
+  margin-bottom: 10px;
+}
+#buttons #cancel-purchase {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+}
+
+#footer {
+  background: none;
+  color: #fff;
+}
+
+.group {
+  background: none;
+  border-color: #d7cf35;
+}
+
+.group h3, .pgroup h3 {
+  border-color: #d7cf35;
+}
+
+#credit-card-info td {
+  padding: 5px 0;
+}
+#credit-card-info a {
+  color: #d7cf35;
+}
+#credit-card-info a:hover {
+  color: #fff;
+}
+
+.sst label {
+  font-size: 11px;
+}
+
+#buttons td {
+  padding: 12px 10px;
+}
+
+.shopify-dialog p {
+  color: #000;
+}
+
+#container.slim #header, #container.slim #main, #container.slim #footer {
+  background: transparent;
+}

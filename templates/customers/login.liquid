@@ -1,0 +1,128 @@
+{% layout settings.customer_layout %}
+
+
+<div class="col s12 m12 l12">
+
+	<div class="container row margin-top-25">
+		<div class="col l6 m6 s12 login-form" style="border-right: 1px solid #9B9B9B;">
+			<!-- Customer Account Login -->
+			<div id="customer-login">
+				<h3>Returning Customers</h3>
+
+				<p class="note">Please sign in for quick checkout and access to convenient features through your account.</p>
+
+				{% form 'customer_login' %}
+					{{ form.errors | default_errors }}
+
+					<p id="login_email">
+						<label for="customer_email" class="hidden">Email Address</label>
+						<input type="email" name="customer[email]" id="customer_email" placeholder="Email Address" />
+					</p>
+
+					{% if form.password_needed %}
+						<p id="login_password">
+							<label for="customer_password" class="hidden">Password</label>
+							<input type="password" name="customer[password]" id="customer_password" placeholder="Password" />
+						</p>
+
+						<p class="note">
+							<a href="#" onclick="showRecoverPasswordForm()">Forgot your password?</a>
+						</p>
+					{% endif %}
+
+					<input class="btn-yellow" type="submit" value="LOG IN" />
+				{% endform %}
+			</div><!-- /#customer-login -->
+
+
+			<!-- Password Recovery -->
+			<div id="recover-password">
+				<div class="page-header">
+					<h3>Reset Password</h3>
+				</div>
+
+				<p class="note">We will send you an email to reset your password.</p>
+
+				{% form 'recover_customer_password' %}
+					{{ form.errors | default_errors }}
+
+					<p id="recover_email" class="clearfix large_form">
+						<label for="email" class="hidden">Email</label>
+						<input type="email"name="email" id="recover-email" placeholder="EMAIL" />
+					</p>
+
+						<p class="note">or <a href="#" onclick="hideRecoverPasswordForm()">Cancel</a></p>
+						<input class="btn-yellow" type="submit" value="SEND EMAIL" />
+				{% endform %}
+			</div><!-- /#recover-password -->
+
+
+			{% if shop.checkout.guest_login %}
+			<div class="guest_login">
+				<h3>Guest Login</h3>
+
+				<p class="note">Or you can continue checkout as a guest. No sign-up required.</p>
+				{% form 'guest_login' %}
+					<input type="submit" value="Continue as Guest" />
+				{% endform %}
+			</div>
+			{% endif %}
+		</div>
+
+		<div class="col l6 m6 s12 login-form">
+			<!-- Create Customer -->
+			<div id="customer-register">
+				<h3>New Customers</h3>
+
+				<p class="note">Register with your details for quick checkout and access to convenient features.</p>
+
+				{% form 'create_customer' %}
+				{{ form.errors | default_errors }}
+
+				<p class="first_name">
+					<label for="new_customer_first_name" class="hidden">FIRST NAME</label>
+					<input type="text" name="customer[first_name]" id="new_customer_first_name" placeholder="FIRST NAME" />
+				</p>
+
+				<p class="last_name">
+					<label for="new_customer_last_name" class="hidden">LAST NAME</label>
+					<input type="text" name="customer[last_name]" id="new_customer_last_name" {% if form.errors contains 'last_name' %}class="error"{% endif %} placeholder="LAST NAME" />
+				</p>
+
+				<p class="email">
+					<label for="new_customer_email" class="hidden">EMAIL</label>
+					<input type="email" name="customer[email]" id="new_customer_email" {% if form.errors contains 'last_name' %}class="error"{% endif %} placeholder="EMAIL" />
+				</p>
+
+				<p class="password">
+					<label for="new_customer_password" class="hidden">PASSWORD</label>
+					<input type="password" name="customer[password]" id="new_customer_password" {% if form.errors contains 'last_name' %}class="error"{% endif %} placeholder="PASSWORD" />
+				</p>
+
+				<input class="btn-yellow" style="margin-top: 20px;" type="submit" value="REGISTER" />
+				{% endform %}
+
+			</div><!-- /#customer-register -->
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	if (window.location.hash == '#recover') { showRecoverPasswordForm()
+	} else {
+		hideRecoverPasswordForm();
+	}
+
+	function showRecoverPasswordForm() {
+		document.getElementById('recover-password').style.display = 'block';
+		document.getElementById('customer-login').style.display='none';
+		window.location.hash = '#recover';
+		return false;
+	}
+
+	function hideRecoverPasswordForm() {
+		document.getElementById('recover-password').style.display = 'none';
+		document.getElementById('customer-login').style.display = 'block';
+		return false;
+	}
+</script>

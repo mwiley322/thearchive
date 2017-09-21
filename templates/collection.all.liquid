@@ -1,0 +1,67 @@
+<!-- COLLECTION ALL -->
+{% paginate collection.products by 48 %}
+
+<div class="row">
+	<div class="desktop-display col s2">
+		<ul class="margin-top-25">
+			<li>
+				<a id="categories-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> CATEGORIES</a>
+			</li>
+				<ul class="categories-dropdown">
+					{% for link in linklists.categories.links %}
+						{% if collection.handle == 'new-arrivals' %}
+							<li class="{% if link.active or parent_link_active %}active{% endif %}">
+								<a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+							</li>
+						{% else %}
+							<li class="{% if link.active or parent_link_active %}active{% endif %}">
+								<a href="{{ link.url }}">{{ link.title }}</a>
+							</li>
+						{% endif %}
+					{% endfor %}
+	      </ul>
+			<li class="margin-top-25">
+				<a id="designers-link"><i style="margin-right:25px" class="fa fa-chevron-down" aria-hidden="true"></i> DESIGNERS</a>
+			</li>
+			<ul class="designers-dropdown">
+				{% for link in linklists.designers.links %}
+					{% if collection.handle == 'new-arrivals' %}
+						<li class="{% if link.active or parent_link_active %}active{% endif %}">
+							<a href="{{ link.url }}?sort_by=created-descending">{{ link.title }}</a>
+						</li>
+					{% else %}
+						<li class="{% if link.active or parent_link_active %}active{% endif %}">
+							<a href="{{ link.url }}">{{ link.title }}</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</ul>
+	</div>
+	<div class="desktop-display col s10">
+		<div style="display:flex; flex-wrap: wrap; justify-content:flex-start; margin-top: 28px;">
+			{% for product in collection.products %}
+				{% include 'products-index' %}
+			{% else %}
+				<p>There are no products in this view.</p>
+			{% endfor %}
+		</div>
+		<div class="center margin-50">
+			{% include 'pagination' %}
+		</div>
+	</div>
+	<div class="mobile-display">
+		<div style="display:flex; flex-wrap: wrap; justify-content:flex-start; margin-top: 28px;">
+			{% for product in collection.products %}
+				{% include 'products-index' %}
+			{% else %}
+				<p>There are no products in this view.</p>
+			{% endfor %}
+		</div>
+		<div class="center margin-50">
+			{% include 'pagination' %}
+		</div>
+	</div>
+</div>
+
+{% endpaginate %}

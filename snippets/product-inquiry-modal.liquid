@@ -1,0 +1,95 @@
+<div id="product-inquire-modal" class="modal modal-fixed-footer">
+    <div class="modal-content" style="padding-top:0;padding-left:0">
+        <div class="row return-policy-modal-header">
+            <div class="col s10 m10 l10 xl10" style="margin-left: 0px !important;padding:0">
+                <h3 style="padding-left:24px">Inquire</h3>
+            </div>
+            <div class="col s2 m2 l2 xl2">
+                <h5 class="modal-close right-align" style="margin-top:0;padding-right:10px">X</h5>
+            </div>
+        </div>
+        <div class="row" style="padding:24px 5px 0">
+          <div class="margin-top-75">
+            <div class="col s4">
+              <img src="{{ product.featured_image.src | product_img_url: 'medium' }}" alt="{{ product.vendor }} - {{ product.title }}">
+            </div>
+            <div class="col s8">
+              <p style="margin-bottom:0">{{ product.vendor | upcase }}</p>
+              <h3>{{ product.title }}</h3>
+              <div class="desktop-display prod_description">
+                {{ product.description }}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="margin-bottom-25" style="padding-left:5px;">
+          {% form 'contact' %}
+          {% if form.errors %}
+              <div class="error_form feedback">
+                <p>Sorry. We were unable to submit your inquiry because it contained {{ form.errors | size | pluralize: 'an error', 'a few errors' }}. Please correct the following and submit again:</p>
+                <ul>
+                  {% for field in form.errors %}
+                    <li class="error">The {{ field | capitalize | replace: 'Body', 'Message' }} field {{ form.errors.messages[field] }}.</li>
+                  {% endfor %}
+                </ul>
+              </div>
+          {% endif %}
+          <div id="inquire_form_wrapper">
+            <input type="hidden" id="inquire_form_product" name="contact[inquiry_product]" value="{{ product.vendor }} - {{ product.title }}" />
+            <div class="row">
+              <div class="col s12 m6 l6 xl6">
+                <label for="inquire_form_name">Name</label>
+                <input type="text" id="inquire_form_name" class="validate inquire-form" name="contact[name]" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m6 l6 xl6">
+                <label for="inquire_form_email">Email</label>
+                <input type="email" id="inquire_form_email" class="validate inquire-form" name="contact[email]" required />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m6 l6 xl6">
+                <label for="inquire_form_message">Message</label>
+                <textarea id="inquire_form_message" class="materialize-textarea inquire-form" name="contact[body]"></textarea>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <p>To help serve you better, please answer the following:</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m6 l6 xl6">
+                <label for="inquire_form_height_and_weight">Your height and weight?</label>
+                <input type="text" id="inquire_form_height_and_weight" class="validate inquire-form" name="contact[height_and_weight]" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m6 l6 xl6">
+                <label for="inquire_form_typical_size">Your typical size in jackets, pants, and shoes?</label>
+                <input type="text" id="inquire_form_typical_size" class="validate inquire-form" name="contact[typical_size]" />
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12 m6 l6 xl6">
+                <label for="inquire_form_location">Your location?</label>
+                <input type="text" id="inquire_form_location" class="validate inquire-form" name="contact[location]" />
+              </div>
+            </div>
+          </div><!-- end #inquire_form_wrapper -->
+          <input type="submit" id="inquire_form_submit" class="checkout-submit-button right" value="SUBMIT INQUIRY"></input>
+        </div>
+    </div>
+    <div class="">
+    </div>
+    {% if form.posted_successfully? %}
+        <div class="success_form feedback">
+         <p>Thank you for contacting us about this item.<br/>We'll get back to you as soon as possible.</p>
+        </div>
+        <script>
+            $('#inquire_form_wrapper').hide();
+        </script>
+    {% endif %}
+    {% endform %}
+</div>
