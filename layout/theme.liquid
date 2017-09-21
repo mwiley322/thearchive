@@ -2,7 +2,6 @@
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="utf-8" />
-		<meta http-equiv="Expires" content="30" />
 
 		<!-- PAGE TITLE -->
 		<title>
@@ -29,28 +28,20 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=yes">
 
 		{{ content_for_header }}
-
 		{{ 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css' | stylesheet_tag }}
-		{{ 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' | stylesheet_tag }}
+		{{ 'https://fonts.googleapis.com/css?family=Open+Sans:400,700' | stylesheet_tag }}
 		{{ 'style.scss.css' | asset_url | stylesheet_tag }}
-
-		<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-		{% if template contains 'customers' %}
-			{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
-			{{ 'customer_area.js'  | shopify_asset_url | script_tag }}
-		{% endif %}
-
-		{{ 'option_selection.js' | shopify_asset_url | script_tag }}
-
-		{{ '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' | script_tag }}
-
-		{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
-
 		{% if template == 'product' %}
 			{{ 'jquery.jqzoom.css' | asset_url | stylesheet_tag }}
 		{% endif %}
 		<!-- FONT AWESOME ICON SCRIPT -->
 		{{ 'https://use.fontawesome.com/caa5c82995.js' | script_tag }}
+
+		{% if template contains 'customers' %}
+			{{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+			{{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+		{% endif %}
+
 	</head>
 
 	<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
@@ -77,14 +68,15 @@
 				{{ content_for_layout }}
 			</div>
 
-
 			<!-- Footer -->
+			{% include 'footer' %}
 		</div>
-		{% include 'footer' %}
 
 
 		<!-- SCRIPTS -->
-
+		{{ 'option_selection.js' | shopify_asset_url | script_tag }}
+		{{ '//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js' | script_tag }}
+		{{ 'api.jquery.js' | shopify_asset_url | script_tag }}
 		{{ 'plugins.js'  | asset_url | script_tag }}
 		{{ 'shop.js'  | asset_url | script_tag }}
 
